@@ -3,503 +3,793 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Shiva Manoj Jaware | Computer Engineering Professional</title>
     <meta name="description" content="Official portfolio of Shiva Manoj Jaware.">
-    
-    <!-- Scripts & Styles -->
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Advanced Animation Libraries -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Animation Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
     <style>
+
         :root {
             --cyan: #00f2fe;
             --blue: #4facfe;
             --dark: #050505;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
+            margin: 0;
             font-family: 'Space Grotesk', sans-serif;
-            background-color: var(--dark);
-            color: #ffffff;
+            background: var(--dark);
+            color: #fff;
             overflow-x: hidden;
             cursor: none;
         }
 
-        /* Mobile polish */
-        @media (max-width: 767px) {
-            body { cursor: auto; }
-            .custom-cursor { display: none; }
-            nav {
-                padding: 14px 16px !important;
-                background: rgba(5,5,5,.72);
-                backdrop-filter: blur(14px);
-            }
-            nav > a:last-child {
-                padding: 8px 12px !important;
-                font-size: 9px !important;
-            }
-            #home {
-                min-height: auto;
-                padding-top: 110px;
-                padding-bottom: 80px;
-            }
-            #home > div {
-                display: flex !important;
-                flex-direction: column;
-                gap: 42px !important;
-            }
-            .hero-text { width: 100%; }
-            .hero-text h1 {
-                font-size: clamp(4rem, 18vw, 6rem) !important;
-                line-height: .86 !important;
-                margin-bottom: 20px !important;
-            }
-            .hero-text .text-xl,
-            .hero-text .md\:text-2xl {
-                font-size: 1.05rem !important;
-                margin-bottom: 24px !important;
-                min-height: 28px;
-            }
-            .hero-text p {
-                font-size: .95rem !important;
-                line-height: 1.7 !important;
-                margin-bottom: 30px !important;
-            }
-            .hero-text > .inline-block {
-                margin-bottom: 22px !important;
-                font-size: 8px !important;
-                letter-spacing: .25em !important;
-            }
-            .hero-text .flex.gap-8 {
-                gap: 18px !important;
-                flex-wrap: wrap;
-            }
-            .hero-text .flex.gap-8 > a {
-                padding: 14px 20px !important;
-                font-size: 11px;
-            }
-            .hud-container {
-                width: min(76vw, 300px) !important;
-                height: min(76vw, 300px) !important;
-            }
-            .profile-img { border-radius: 18px; }
+        /* =========================
+           EFFECTS
+        ========================= */
 
-            #about, #skills, #projects, #contact {
-                padding-top: 90px !important;
-                padding-bottom: 90px !important;
-            }
-            #about .grid, #skills .grid {
-                gap: 36px !important;
-            }
-            #about h2 {
-                margin-bottom: 44px !important;
-                letter-spacing: .45em !important;
-            }
-            #about .glass { padding: 28px !important; }
-            #about h3 {
-                font-size: 2rem !important;
-            }
-            #about p { font-size: 1rem !important; }
-
-            #skills h2 {
-                font-size: 2.5rem !important;
-                margin-bottom: 38px !important;
-            }
-            #skills .flex-wrap { gap: 10px !important; }
-            #skills .flex-wrap span {
-                padding: 12px 15px !important;
-                font-size: 9px !important;
-            }
-
-            #projects h2 {
-                margin-bottom: 44px !important;
-                letter-spacing: .45em !important;
-            }
-            #projects .glass { padding: 26px !important; }
-
-            #contact { padding-left: 16px !important; padding-right: 16px !important; }
-            #contact .glass {
-                padding: 28px 20px !important;
-                border-radius: 20px;
-            }
-            #contact h2 {
-                font-size: 2.6rem !important;
-            }
-            #contact form { gap: 24px !important; }
-            #contact button {
-                width: 100%;
-                padding: 16px 20px !important;
-            }
-
-            footer { padding: 50px 16px !important; }
-            footer .text-sm { letter-spacing: .3em !important; }
-        }
-
-        /* Prevent horizontal overflow from decorative elements */
-        section, nav, footer { max-width: 100vw; }
-
-        /* --- Effects Layer --- */
         #spotlight {
             position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
-            background: radial-gradient(circle 400px at var(--x) var(--y), rgba(0, 242, 254, 0.15), transparent 80%);
+            background:
+                radial-gradient(
+                    circle 400px at var(--x) var(--y),
+                    rgba(0,242,254,.15),
+                    transparent 80%
+                );
             z-index: 1;
         }
 
         .custom-cursor {
             position: fixed;
-            width: 10px; height: 10px;
+            width: 10px;
+            height: 10px;
             background: var(--cyan);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
             box-shadow: 0 0 15px var(--cyan);
-            transition: transform 0.1s;
         }
 
-        /* --- Glassmorphism --- */
+        /* =========================
+           GLASS
+        ========================= */
+
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255,255,255,.03);
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255,255,255,.08);
             border-radius: 24px;
         }
 
-        /* --- HUD Image Rings --- */
-        .hud-container {
-            position: relative;
-            width: 350px; height: 350px;
-        }
+        /* =========================
+           GRADIENT
+        ========================= */
 
-        .hud-ring {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        .ring-1 { width: 110%; height: 110%; border-style: dashed; animation: rotate 20s linear infinite; }
-        .ring-2 { width: 120%; height: 120%; border-width: 2px; border-color: rgba(0, 242, 254, 0.1); border-left-color: var(--cyan); animation: rotate 10s linear infinite reverse; }
-
-        @keyframes rotate { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-
-        .profile-img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-            filter: grayscale(20%) contrast(1.1);
-            transition: 0.5s;
-        }
-
-        /* --- Gradient Text --- */
         .text-gradient {
-            background: linear-gradient(90deg, var(--cyan), var(--blue));
+            background: linear-gradient(
+                90deg,
+                var(--cyan),
+                var(--blue)
+            );
+
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .bg-gradient-premium {
-            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            background: linear-gradient(
+                135deg,
+                var(--cyan),
+                var(--blue)
+            );
         }
 
-        /* Hide scrollbar */
-        ::-webkit-scrollbar { width: 0px; }
+        /* =========================
+           PROFILE IMAGE
+        ========================= */
+
+        .hud-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+        }
+
+        .hud-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(0,242,254,.3);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .ring-1 {
+            width: 110%;
+            height: 110%;
+            border-style: dashed;
+            animation: rotate 20s linear infinite;
+        }
+
+        .ring-2 {
+            width: 120%;
+            height: 120%;
+            border-width: 2px;
+            border-color: rgba(0,242,254,.1);
+            border-left-color: var(--cyan);
+            animation: rotate 10s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%,-50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%,-50%) rotate(360deg);
+            }
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            filter: grayscale(20%) contrast(1.1);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 767px) {
+
+            body {
+                cursor: auto;
+            }
+
+            .custom-cursor {
+                display: none;
+            }
+
+            nav {
+                padding: 14px 16px !important;
+                background: rgba(5,5,5,.8);
+                backdrop-filter: blur(15px);
+            }
+
+            /* Mobile Menu */
+
+            #mobile-menu {
+                z-index: 100;
+            }
+
+            /* Hero */
+
+            #home {
+                display: block !important;
+                min-height: auto !important;
+                padding: 115px 18px 65px !important;
+            }
+
+            #home > div {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 35px !important;
+                align-items: stretch !important;
+            }
+
+            .hero-text {
+                order: 1 !important;
+                width: 100% !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .hero-text > * {
+                visibility: visible !important;
+            }
+
+            /* Status */
+
+            .hero-text .inline-block {
+                margin-bottom: 20px !important;
+                font-size: 8px !important;
+                letter-spacing: .25em !important;
+            }
+
+            /* Name */
+
+            .hero-text h1 {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: none !important;
+
+                font-size: clamp(
+                    4rem,
+                    18vw,
+                    5.7rem
+                ) !important;
+
+                line-height: .84 !important;
+                margin: 0 0 20px !important;
+            }
+
+            .hero-text h1 span {
+                display: inline !important;
+            }
+
+            /* Job Title */
+
+            .hero-text .text-xl,
+            .hero-text .md\:text-2xl {
+                display: block !important;
+                min-height: 30px !important;
+                margin-bottom: 22px !important;
+                font-size: 1.05rem !important;
+            }
+
+            /* Description */
+
+            .hero-text p {
+                display: block !important;
+                font-size: .95rem !important;
+                line-height: 1.65 !important;
+                margin-bottom: 28px !important;
+            }
+
+            /* Buttons */
+
+            .hero-text .flex.gap-8 {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                align-items: center !important;
+                gap: 16px !important;
+            }
+
+            .hero-text .flex.gap-8 > a {
+                display: flex !important;
+                padding: 14px 20px !important;
+                font-size: 11px !important;
+            }
+
+            /* Profile */
+
+            #home > div > .flex.justify-center {
+                order: 2 !important;
+                display: flex !important;
+                justify-content: center !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .hud-container {
+                width: min(78vw, 290px) !important;
+                height: min(78vw, 290px) !important;
+            }
+
+            /* Sections */
+
+            #about,
+            #skills,
+            #projects,
+            #contact {
+                padding-top: 80px !important;
+                padding-bottom: 80px !important;
+            }
+
+            #about h2,
+            #projects h2 {
+                margin-bottom: 42px !important;
+                letter-spacing: .45em !important;
+            }
+
+            #about .grid,
+            #skills .grid {
+                gap: 35px !important;
+            }
+
+            #about .glass {
+                padding: 28px !important;
+            }
+
+            #about h3 {
+                font-size: 2rem !important;
+            }
+
+            #about p {
+                font-size: 1rem !important;
+            }
+
+            /* Skills */
+
+            #skills h2 {
+                font-size: 2.5rem !important;
+                margin-bottom: 38px !important;
+            }
+
+            #skills .flex-wrap {
+                gap: 10px !important;
+            }
+
+            #skills .flex-wrap span {
+                padding: 12px 15px !important;
+                font-size: 9px !important;
+            }
+
+            /* Projects */
+
+            #projects .glass {
+                padding: 26px !important;
+            }
+
+            /* Contact */
+
+            #contact {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+
+            #contact .glass {
+                padding: 28px 20px !important;
+                border-radius: 20px;
+            }
+
+            #contact h2 {
+                font-size: 2.6rem !important;
+            }
+
+            #contact button {
+                width: 100%;
+                padding: 16px 20px !important;
+            }
+
+            /* Footer */
+
+            footer {
+                padding: 50px 16px !important;
+            }
+
+            footer .text-sm {
+                letter-spacing: .3em !important;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+        }
+
     </style>
 </head>
+
 <body>
 
-    <!-- Functional Visual Layers -->
+    <!-- Spotlight -->
     <div id="spotlight"></div>
+
+    <!-- Cursor -->
     <div class="custom-cursor" id="cursor"></div>
 
-    <!-- Navigation -->
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
     <nav class="fixed top-0 w-full z-50 p-6 flex justify-between items-center max-w-7xl left-1/2 -translate-x-1/2">
-        <div class="text-2xl font-bold tracking-tighter">S<span class="text-cyan-400">M</span>J</div>
-        <div class="hidden md:flex gap-10 text-[10px] font-bold tracking-[0.3em] uppercase opacity-60">
-            <a href="#home" class="hover:text-cyan-400 transition">Home</a>
-            <a href="#about" class="hover:text-cyan-400 transition">About</a>
-            <a href="#skills" class="hover:text-cyan-400 transition">Skills</a>
-            <a href="#projects" class="hover:text-cyan-400 transition">Projects</a>
+
+        <div class="text-2xl font-bold tracking-tighter">
+            S<span class="text-cyan-400">M</span>J
         </div>
-        <button id="mobile-menu-btn" class="md:hidden glass px-3 py-2 text-cyan-400" aria-label="Open menu">
+
+        <!-- Desktop Menu -->
+
+        <div class="hidden md:flex gap-10 text-[10px] font-bold tracking-[0.3em] uppercase opacity-60">
+
+            <a href="#home" class="hover:text-cyan-400 transition">
+                Home
+            </a>
+
+            <a href="#about" class="hover:text-cyan-400 transition">
+                About
+            </a>
+
+            <a href="#skills" class="hover:text-cyan-400 transition">
+                Skills
+            </a>
+
+            <a href="#projects" class="hover:text-cyan-400 transition">
+                Projects
+            </a>
+
+            <a href="#contact" class="hover:text-cyan-400 transition">
+                Contact
+            </a>
+
+        </div>
+
+        <!-- Mobile Menu Button -->
+
+        <button
+            id="mobile-menu-btn"
+            class="md:hidden glass px-4 py-3 text-cyan-400"
+            aria-label="Open menu">
+
             <i class="fa-solid fa-bars"></i>
+
         </button>
-        <a href="resume.pdf" download class="glass px-6 py-2 text-[10px] font-bold tracking-widest border border-cyan-500/30 hover:bg-cyan-500 hover:text-black transition-all">RESUME.PDF</a>
+
+        <!-- Resume -->
+
+        <a
+            href="resume.pdf"
+            download
+            class="glass px-6 py-2 text-[10px] font-bold tracking-widest border border-cyan-500/30 hover:bg-cyan-500 hover:text-black transition-all">
+
+            RESUME.PDF
+
+        </a>
+
     </nav>
 
-    <div id="mobile-menu" class="fixed top-[68px] left-4 right-4 z-40 hidden glass p-5 md:hidden">
-        <div class="flex flex-col gap-5 text-xs font-bold tracking-[0.25em] uppercase">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+
+    <!-- =========================
+         MOBILE MENU
+    ========================= -->
+
+    <div
+        id="mobile-menu"
+        class="fixed top-[75px] left-4 right-4 z-40 hidden glass p-6 md:hidden">
+
+        <div class="flex flex-col gap-6 text-xs font-bold tracking-[0.25em] uppercase">
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#skills">
+                Skills
+            </a>
+
+            <a href="#projects">
+                Projects
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
         </div>
+
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center px-6 md:px-24 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-20 items-center z-10">
-            
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section
+        id="home"
+        class="min-h-screen flex items-center px-6 md:px-24 relative overflow-hidden">
+
+        <div
+            class="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-20 items-center z-10">
+
+
+            <!-- Hero Text -->
+
             <div class="hero-text">
-                <div class="inline-block px-4 py-1 mb-8 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-bold tracking-[0.4em]">
+
+                <div
+                    class="inline-block px-4 py-1 mb-8 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-bold tracking-[0.4em]">
+
                     SYSTEM ACTIVE // AVAILABLE
+
                 </div>
-                <h1 class="text-7xl md:text-9xl font-bold leading-[0.9] tracking-tighter mb-6">
+
+
+                <h1
+                    class="text-7xl md:text-9xl font-bold leading-[0.9] tracking-tighter mb-6">
+
                     SHIVA<br>
-                    <span class="text-gradient">JAWARE</span>
+
+                    <span class="text-gradient">
+                        JAWARE
+                    </span>
+
                 </h1>
-                <div class="text-xl md:text-2xl text-slate-400 font-light mb-10">
+
+
+                <div
+                    class="text-xl md:text-2xl text-slate-400 font-light mb-10">
+
                     <span id="typed"></span>
+
                 </div>
-                <p class="text-slate-500 max-w-md mb-12 text-lg leading-relaxed">
-                    Merging computer engineering precision with modern technology solutions. Focused on IT support, development, and digital automation.
+
+
+                <p
+                    class="text-slate-500 max-w-md mb-12 text-lg leading-relaxed">
+
+                    Merging computer engineering precision with modern technology solutions.
+                    Focused on IT support, development, and digital automation.
+
                 </p>
+
+
+                <!-- Contact + Social -->
+
                 <div class="flex gap-8 items-center">
-                    <a href="#contact" class="bg-gradient-premium text-black font-bold px-10 py-5 rounded-xl hover:scale-105 transition-transform flex items-center gap-3">
-                        INITIATE CONTACT <i class="fa-solid fa-arrow-right"></i>
+
+                    <a
+                        href="#contact"
+                        class="bg-gradient-premium text-black font-bold px-10 py-5 rounded-xl hover:scale-105 transition-transform flex items-center gap-3">
+
+                        INITIATE CONTACT
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
                     </a>
+
+
                     <div class="flex gap-6 text-xl opacity-40">
-                        <a href="https://instagram.com/life_hacker_shiva_96k" target="_blank" class="hover:text-cyan-400"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://linkedin.com/in/shiva-jaware" target="_blank" class="hover:text-cyan-400"><i class="fa-brands fa-linkedin-in"></i></a>
+
+                        <a
+                            href="https://instagram.com/life_hacker_shiva_96k"
+                            target="_blank"
+                            class="hover:text-cyan-400">
+
+                            <i class="fa-brands fa-instagram"></i>
+
+                        </a>
+
+
+                        <a
+                            href="https://linkedin.com/in/shiva-jaware"
+                            target="_blank"
+                            class="hover:text-cyan-400">
+
+                            <i class="fa-brands fa-linkedin-in"></i>
+
+                        </a>
+
                     </div>
+
                 </div>
+
             </div>
+
+
+            <!-- Profile -->
 
             <div class="flex justify-center">
-                <div class="hud-container" data-tilt data-tilt-max="10">
+
+                <div
+                    class="hud-container"
+                    data-tilt
+                    data-tilt-max="10">
+
                     <div class="hud-ring ring-1"></div>
+
                     <div class="hud-ring ring-2"></div>
-                    <img src="shiva.jpg" alt="Shiva Jaware" class="profile-img shadow-[0_0_50px_rgba(0,242,254,0.2)]">
+
+                    <img
+                        src="shiva.jpg"
+                        alt="Shiva Jaware"
+                        class="profile-img shadow-[0_0_50px_rgba(0,242,254,0.2)]">
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-40 px-6">
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section
+        id="about"
+        class="py-40 px-6">
+
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-xs font-bold tracking-[0.8em] text-cyan-500 uppercase mb-20 text-center">Protocol 01: Biography</h2>
+
+            <h2
+                class="text-xs font-bold tracking-[0.8em] text-cyan-500 uppercase mb-20 text-center">
+
+                Protocol 01: Biography
+
+            </h2>
+
+
             <div class="grid md:grid-cols-2 gap-24">
+
+
                 <div class="glass p-12 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4 text-[8px] opacity-20 font-mono">META_DATA_v2.026</div>
-                    <h3 class="text-4xl font-bold mb-8 uppercase tracking-tighter">Building the <span class="text-gradient">Future</span> Byte by Byte.</h3>
-                    <p class="text-slate-400 text-xl leading-relaxed italic">
-                        "I am a passionate computer professional specializing in Computer Engineering, office applications, and IT support. I evolve with every line of code."
+
+                    <div
+                        class="absolute top-0 right-0 p-4 text-[8px] opacity-20 font-mono">
+
+                        META_DATA_v2.026
+
+                    </div>
+
+
+                    <h3
+                        class="text-4xl font-bold mb-8 uppercase tracking-tighter">
+
+                        Building the
+
+                        <span class="text-gradient">
+                            Future
+                        </span>
+
+                        Byte by Byte.
+
+                    </h3>
+
+
+                    <p
+                        class="text-slate-400 text-xl leading-relaxed italic">
+
+                        "I am a passionate computer professional specializing in Computer Engineering,
+                        office applications, and IT support. I evolve with every line of code."
+
                     </p>
+
                 </div>
+
+
                 <div class="space-y-6">
-                    <div class="glass p-8 flex items-center justify-between group" data-tilt>
+
+
+                    <div
+                        class="glass p-8 flex items-center justify-between group"
+                        data-tilt>
+
                         <div>
-                            <div class="text-[10px] text-cyan-500 font-bold mb-1">LOCATION</div>
-                            <div class="text-xl font-bold">MAHARASHTRA, IN</div>
+
+                            <div
+                                class="text-[10px] text-cyan-500 font-bold mb-1">
+
+                                LOCATION
+
+                            </div>
+
+                            <div class="text-xl font-bold">
+
+                                MAHARASHTRA, IN
+
+                            </div>
+
                         </div>
-                        <i class="fa-solid fa-location-crosshairs opacity-20 text-2xl group-hover:opacity-100 group-hover:text-cyan-400 transition"></i>
+
+                        <i
+                            class="fa-solid fa-location-crosshairs opacity-20 text-2xl group-hover:opacity-100 group-hover:text-cyan-400 transition">
+                        </i>
+
                     </div>
-                    <div class="glass p-8 flex items-center justify-between group" data-tilt>
+
+
+                    <div
+                        class="glass p-8 flex items-center justify-between group"
+                        data-tilt>
+
                         <div>
-                            <div class="text-[10px] text-cyan-500 font-bold mb-1">EXPERIENCE</div>
-                            <div class="text-xl font-bold">1 YEAR PROFESSIONAL</div>
+
+                            <div
+                                class="text-[10px] text-cyan-500 font-bold mb-1">
+
+                                EXPERIENCE
+
+                            </div>
+
+                            <div class="text-xl font-bold">
+
+                                1 YEAR PROFESSIONAL
+
+                            </div>
+
                         </div>
-                        <i class="fa-solid fa-code-branch opacity-20 text-2xl group-hover:opacity-100 group-hover:text-cyan-400 transition"></i>
+
+                        <i
+                            class="fa-solid fa-code-branch opacity-20 text-2xl group-hover:opacity-100 group-hover:text-cyan-400 transition">
+                        </i>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-40 px-6 bg-[#020202]">
+
+    <!-- =========================
+         SKILLS
+    ========================= -->
+
+    <section
+        id="skills"
+        class="py-40 px-6 bg-[#020202]">
+
         <div class="max-w-5xl mx-auto">
+
             <div class="grid md:grid-cols-2 gap-32">
+
+
                 <div>
-                    <h2 class="text-5xl font-bold mb-12 tracking-tighter uppercase">Technical <span class="text-gradient">Matrix</span></h2>
+
+                    <h2
+                        class="text-5xl font-bold mb-12 tracking-tighter uppercase">
+
+                        Technical
+
+                        <span class="text-gradient">
+                            Matrix
+                        </span>
+
+                    </h2>
+
+
                     <div class="space-y-10">
-                        <div class="skill-group">
-                            <div class="flex justify-between text-xs font-bold mb-3 tracking-widest opacity-60 uppercase"><span>C Programming</span><span>80%</span></div>
-                            <div class="h-[2px] w-full bg-white/5 overflow-hidden"><div class="skill-fill h-full bg-cyan-400" style="width:0%" data-target="80%"></div></div>
-                        </div>
-                        <div class="skill-group">
-                            <div class="flex justify-between text-xs font-bold mb-3 tracking-widest opacity-60 uppercase"><span>Java</span><span>75%</span></div>
-                            <div class="h-[2px] w-full bg-white/5 overflow-hidden"><div class="skill-fill h-full bg-cyan-400" style="width:0%" data-target="75%"></div></div>
-                        </div>
-                        <div class="skill-group">
-                            <div class="flex justify-between text-xs font-bold mb-3 tracking-widest opacity-60 uppercase"><span>Advanced Excel</span><span>90%</span></div>
-                            <div class="h-[2px] w-full bg-white/5 overflow-hidden"><div class="skill-fill h-full bg-cyan-400" style="width:0%" data-target="90%"></div></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-wrap gap-4 content-center">
-                    <span class="glass px-8 py-4 text-xs font-bold tracking-widest hover:border-cyan-400 transition cursor-default">PYTHON</span>
-                    <span class="glass px-8 py-4 text-xs font-bold tracking-widest hover:border-cyan-400 transition cursor-default">MS-CIT</span>
-                    <span class="glass px-8 py-4 text-xs font-bold tracking-widest hover:border-cyan-400 transition cursor-default">TROUBLESHOOTING</span>
-                    <span class="glass px-8 py-4 text-xs font-bold tracking-widest hover:border-cyan-400 transition cursor-default">DATA ENTRY</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-40 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-xs font-bold tracking-[0.8em] text-cyan-500 uppercase mb-20 text-center">Protocol 02: Deployments</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="glass p-10 group relative overflow-hidden" data-tilt>
-                    <div class="text-4xl text-cyan-500 mb-8 opacity-40 group-hover:opacity-100 transition"><i class="fa-solid fa-car-side"></i></div>
-                    <h4 class="text-2xl font-bold mb-4 uppercase">Car Parking System</h4>
-                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">Automated management tool built with Java Swing for log allocation.</p>
-                    <div class="text-[10px] font-bold text-cyan-400 tracking-[0.3em]">JAVA // GUI</div>
-                </div>
-                <!-- Card 2 -->
-                <div class="glass p-10 group relative overflow-hidden" data-tilt>
-                    <div class="text-4xl text-blue-500 mb-8 opacity-40 group-hover:opacity-100 transition"><i class="fa-solid fa-calculator"></i></div>
-                    <h4 class="text-2xl font-bold mb-4 uppercase">Fare Calculator</h4>
-                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">Real-time transport fare calculation utility using Python libraries.</p>
-                    <div class="text-[10px] font-bold text-cyan-400 tracking-[0.3em]">PYTHON // LOGIC</div>
-                </div>
-                <!-- Card 3 -->
-                <div class="glass p-10 group relative overflow-hidden" data-tilt>
-                    <div class="text-4xl text-indigo-500 mb-8 opacity-40 group-hover:opacity-100 transition"><i class="fa-solid fa-database"></i></div>
-                    <h4 class="text-2xl font-bold mb-4 uppercase">Data Dashboards</h4>
-                    <p class="text-slate-500 text-sm mb-10 leading-relaxed">Complex visual analytics and automation using Advanced Excel.</p>
-                    <div class="text-[10px] font-bold text-cyan-400 tracking-[0.3em]">EXCEL // BI</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-40 px-6 max-w-4xl mx-auto">
-        <div class="glass p-12 md:p-20 relative">
-            <h2 class="text-5xl font-bold mb-4 tracking-tighter uppercase text-center">Let's <span class="text-gradient">Connect</span></h2>
-            <p class="text-slate-500 text-center mb-16">Initializing communication channel...</p>
-            
-            <form id="contact-form" action="https://formspree.io/f/xzepgdnp" method="POST" class="space-y-8">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <input type="text" name="name" placeholder="NAME" required class="w-full bg-transparent border-b border-white/10 py-4 focus:border-cyan-400 focus:outline-none transition-colors text-sm tracking-widest uppercase">
-                    <input type="email" name="email" placeholder="EMAIL" required class="w-full bg-transparent border-b border-white/10 py-4 focus:border-cyan-400 focus:outline-none transition-colors text-sm tracking-widest uppercase">
-                </div>
-                <textarea name="message" rows="4" placeholder="MESSAGE" required class="w-full bg-transparent border-b border-white/10 py-4 focus:border-cyan-400 focus:outline-none transition-colors text-sm tracking-widest uppercase"></textarea>
-                
-                <div class="flex flex-col items-center pt-10">
-                    <button type="submit" id="submit-btn" class="bg-gradient-premium text-black font-bold px-16 py-5 rounded-full hover:scale-105 transition-all group">
-                        <span id="btn-text">SEND PACKET <i class="fa-solid fa-paper-plane ml-2 group-hover:translate-x-2 transition"></i></span>
-                    </button>
-                    <p id="form-status" class="hidden mt-6 text-xs font-bold tracking-[0.3em] uppercase"></p>
-                </div>
-            </form>
-        </div>
-    </section>
+                        <!-- C -->
 
-    <!-- Footer -->
-    <footer class="py-20 text-center border-t border-white/5">
-        <div class="text-sm font-bold tracking-[0.5em] opacity-20 uppercase mb-4">SHIVA MANOJ JAWARE</div>
-        <div class="text-[10px] opacity-10 tracking-[1em] uppercase">&copy; 2026 // ALL SYSTEMS NOMINAL</div>
-    </footer>
+                        <div>
 
-    <!-- Scripts -->
-    <script>
-        // Custom Cursor & Spotlight Effect
-        const spotlight = document.getElementById('spotlight');
-        const cursor = document.getElementById('cursor');
+                            <div
+                                class="flex justify-between text-xs font-bold mb-3 tracking-widest opacity-60 uppercase">
 
-        document.addEventListener('mousemove', (e) => {
-            spotlight.style.setProperty('--x', e.clientX + 'px');
-            spotlight.style.setProperty('--y', e.clientY + 'px');
-            
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+                                <span>
+                                    C Programming
+                                </span>
 
-        // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                mobileMenuBtn.innerHTML = mobileMenu.classList.contains('hidden')
-                    ? '<i class="fa-solid fa-bars"></i>'
-                    : '<i class="fa-solid fa-xmark"></i>';
-            });
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
-                });
-            });
-        }
+                                <span>
+                                    80%
+                                </span>
 
-        // GSAP Initialization
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Hero Animation
-        gsap.from(".hero-text > *", { y: 100, opacity: 0, duration: 1.5, stagger: 0.2, ease: "power4.out" });
-        gsap.from(".hud-container", { scale: 0.5, opacity: 0, duration: 2, ease: "elastic.out(1, 0.5)" });
-
-        // Skill Fill Animation
-        document.querySelectorAll('.skill-fill').forEach(fill => {
-            gsap.to(fill, {
-                scrollTrigger: { trigger: fill, start: "top 95%" },
-                width: fill.dataset.target,
-                duration: 2,
-                ease: "power2.inOut"
-            });
-        });
-
-        // Typed strings
-        new Typed('#typed', {
-            strings: ['Computer Operator', 'Engineering Professional', 'IT Support Enthusiast', 'Technology Specialist'],
-            typeSpeed: 50, backSpeed: 30, loop: true
-        });
-
-        // Formspree Handling
-        const form = document.getElementById("contact-form");
-        const btnText = document.getElementById("btn-text");
-        const status = document.getElementById("form-status");
-
-        form.onsubmit = async (e) => {
-            e.preventDefault();
-            btnText.innerHTML = "SENDING...";
-            const data = new FormData(form);
-            const response = await fetch(form.action, {
-                method: 'POST', body: data, headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                status.innerHTML = "✅ TRANSMISSION SUCCESSFUL";
-                status.classList.remove('hidden');
-                status.style.color = "#00f2fe";
-                btnText.innerHTML = "MESSAGE SENT ✓";
-                form.reset();
-                setTimeout(() => { 
-                    btnText.innerHTML = 'SEND PACKET <i class="fa-solid fa-paper-plane ml-2"></i>';
-                    status.classList.add('hidden');
-                }, 5000);
-            } else {
-                status.innerHTML = "❌ TRANSMISSION FAILED";
-                status.classList.remove('hidden');
-                status.style.color = "#ff4d4d";
-            }
-        };
-
-        // Section Glitch Reveal
-        gsap.utils.toArray('h2').forEach(heading => {
-            gsap.from(heading, {
-                scrollTrigger: { trigger: heading, start: "top 90%" },
-                opacity: 0, x: -50, duration: 1
-            });
-        });
-    </script>
-</body>
-</html>
+                        
