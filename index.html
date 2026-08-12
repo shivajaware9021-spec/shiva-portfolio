@@ -382,8 +382,8 @@
                 </div>
                 
                 <div class="glass-card p-10" data-aos="fade-left">
-               
-                    <form action="https://formspree.io/f/xzepgdnp"
+                    <form id="contact-form"
+      action="https://formspree.io/f/xzepgdnp"
       method="POST"
       class="space-y-5">
 
@@ -392,7 +392,6 @@
         <input
             type="text"
             name="name"
-            autocomplete="name"
             required
             placeholder="Your Name"
             class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-cyan-400"
@@ -401,7 +400,6 @@
         <input
             type="email"
             name="email"
-            autocomplete="email"
             required
             placeholder="Your Email"
             class="w-full bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-cyan-400"
@@ -426,14 +424,19 @@
     ></textarea>
 
     <button
+        id="send-btn"
         type="submit"
-        class="btn w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-black font-extrabold hover:scale-[1.01]">
+        class="btn w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-600 text-black font-extrabold">
 
         <i data-lucide="send" class="w-5"></i>
-
         SEND MESSAGE
 
     </button>
+
+    <div
+        id="form-status"
+        class="hidden text-center p-4 rounded-2xl font-semibold">
+    </div>
 
                     </form>
                 </div>
@@ -479,5 +482,84 @@
             cursorChar: '|'
         });
     </script>
+        // ================= CONTACT FORM =================
+
+    const contactForm = document.getElementById("contact-form");
+    const sendBtn = document.getElementById("send-btn");
+    const statusBox = document.getElementById("form-status");
+
+    if (contactForm) {
+
+        contactForm.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = "SENDING...";
+
+            const formData = new FormData(contactForm);
+
+            try {
+
+                const response = await fetch(contactForm.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                });
+
+                if (response.ok) {
+
+                    statusBox.classList.remove("hidden");
+
+                    statusBox.classList.remove(
+                        "text-red-400",
+                        "bg-red-500/10"
+                    );
+
+                    statusBox.classList.add(
+                        "text-green-400",
+                        "bg-green-500/10"
+                    );
+
+                    statusBox.innerHTML =
+                        "✅ Message sent successfully! Thank you.";
+
+                    contactForm.reset();
+
+                    sendBtn.innerHTML = "MESSAGE SENT ✓";
+
+                    setTimeout(function() {
+                        sendBtn.disabled = false;
+                        sendBtn.innerHTML = "SEND MESSAGE";
+                    }, 3000);
+
+                } else {
+
+                    throw new Error("Form submission failed");
+
+                }
+
+            } catch (error) {
+
+                statusBox.classList.remove("hidden");
+
+                statusBox.classList.add(
+                    "text-red-400",
+                    "bg-red-500/10"
+                );
+
+                statusBox.innerHTML =
+                    "❌ Something went wrong. Please try again.";
+
+                sendBtn.disabled = false;
+                sendBtn.innerHTML = "SEND MESSAGE";
+
+            }
+
+        });
+
+    }
 </body>
 </html>
